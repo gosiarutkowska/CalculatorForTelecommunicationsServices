@@ -4,7 +4,7 @@ This is a React application that helps you calculate the total cost of various t
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/) >= 14.4.0
+- [Node.js](https://nodejs.org/en/download/) >= 16
 - [Docker](https://www.docker.com/products/docker-desktop) (Optional)
 
 ## Setup
