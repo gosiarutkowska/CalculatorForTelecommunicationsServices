@@ -11,10 +11,10 @@ This is a React application that helps you calculate the total cost of various t
 
 First, clone the repository to your local machine:
 
-\`\`\`bash
+```bash
 git clone https://github.com/gosiarutkowska/CalculatorFotTelecommunicationsServices.git
 cd CalculatorFotTelecommunicationsServices
-\`\`\`
+```
 
 ## Installation
 
