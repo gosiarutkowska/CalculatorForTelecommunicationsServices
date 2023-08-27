@@ -12,8 +12,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding-top: 5vh;
-   /*background-color: #f0f4f8;*/
-    background-image: linear-gradient(to right, rgba(106, 17, 203, 0.27), rgba(0, 123, 255, 0.38));
+    background-color: #e8ecf1;
 }
 
 .App {
