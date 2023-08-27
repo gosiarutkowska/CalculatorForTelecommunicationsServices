@@ -115,4 +115,4 @@ To test different packages and communication services, feel free to visit `src/m
 
 ## Author
 
-- [Gosia Rutkowska](https://github.com/gosiarutkowska)
+- [Gosia Rutkowska](https://www.linkedin.com/in/m-rutkowska/)
