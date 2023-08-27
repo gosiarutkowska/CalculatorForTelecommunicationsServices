@@ -4,3 +4,7 @@ services:
     build: .
     ports:
       - "3000:3000"
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
+    command: ["npm", "start"]
