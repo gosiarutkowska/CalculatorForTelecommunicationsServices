@@ -19,7 +19,7 @@ cd CalculatorFotTelecommunicationsServices
 
 ## Installation and Running the Application
 
-### Using npm
+* ### Using npm
 
 #### Installation with npm
 
@@ -39,7 +39,7 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Using Docker
+* ### Using Docker
 
 #### Installation using Docker
 
