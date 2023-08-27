@@ -22,22 +22,22 @@
   ],
   "bundles": [
     {
-      "name": "Internet + Telewizja",
+      "name": "Pakiet srebrny",
       "services": ["Internet", "Telewizja"],
       "prices": {"2023": 72, "2024": 89, "2025": 99}
     },
     {
-      "name": "Internet + Abonament telefoniczny",
+      "name": "Pakiet złoty",
       "services": ["Internet", "Abonament telefoniczny"],
       "prices": {"2023": 64, "2024": 64, "2025": 64}
     },
     {
-      "name": "Wszystko w cenie",
+      "name": "Pakiet platynowy",
       "services": ["Abonament telefoniczny", "Telewizja", "Dekoder 4K"],
       "prices": {"2023": 44, "2024": 64, "2025": 664}
     },
     {
-      "name": "Wszystko test",
+      "name": "Pakiet VIP",
       "services": ["Abonament telefoniczny", "Internet"],
       "prices": {"2023": 54, "2024": 64, "2025": 4}
     }

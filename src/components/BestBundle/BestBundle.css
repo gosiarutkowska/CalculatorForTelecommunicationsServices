@@ -1,0 +1,35 @@
+.best-bundle-wrapper {
+    background-color: #f9f9f9;
+    padding: 30px 70px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+}
+
+.best-bundle-wrapper h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.best-bundle-wrapper p {
+    margin: 10px 0;
+}
+
+.best-bundle-wrapper p span.package-name,
+.best-bundle-wrapper p span.package-price {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.best-bundle-wrapper p span.savings {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.2em;
+}
+
+.services-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 5px;
+}

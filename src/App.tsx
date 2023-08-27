@@ -6,6 +6,7 @@ import CalculateButton from './components/CalculateButton/CalculateButton';
 import TotalPrice from './components/TotalPrice/TotalPrice';
 import BestBundle from './components/BestBundle/BestBundle';
 import { Bundle } from './types/commonTypes';
+import './App.css';
 
 const App: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
@@ -79,19 +80,25 @@ const App: React.FC = () => {
 
   return (
       <div className="App">
-        <h1>Kalkulator usług telekomunikacyjnych</h1>
-        <SelectYear
-            selectedYear={selectedYear}
-            handleYearChange={handleYearChange}
-            years={data.years}
-        />
-        <h2>Wybierz usług, którymi się interesujesz</h2>
-        <ServiceCheckboxes
-            services={data.services}
-            selectedServices={selectedServices}
-            handleServiceChange={handleServiceChange}
-        />
-        <CalculateButton calculateTotal={calculateTotal} />
+        <div className="main-content">
+          <h1>Kalkulator usług telekomunikacyjnych</h1>
+          <SelectYear
+              selectedYear={selectedYear}
+              handleYearChange={handleYearChange}
+              years={data.years}
+          />
+          <div className="services-wrapper">
+            <h4>Wybierz usługi, którymi się interesujesz</h4>
+            <ServiceCheckboxes
+                services={data.services}
+                selectedServices={selectedServices}
+                handleServiceChange={handleServiceChange}
+            />
+          </div>
+          <div className="button-wrapper">
+            <CalculateButton calculateTotal={calculateTotal} />
+          </div>
+        </div>
         <TotalPrice totalPrice={totalPrice} />
         <BestBundle
             bestBundle={bestBundle}

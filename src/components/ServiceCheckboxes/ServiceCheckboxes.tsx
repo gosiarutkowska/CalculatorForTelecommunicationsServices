@@ -1,5 +1,6 @@
 import React from 'react';
 import { Service } from '../../types/commonTypes';
+import './ServiceCheckboxes.css';
 
 interface Props {
     services: Service[];
@@ -8,21 +9,23 @@ interface Props {
 }
 
 const ServiceCheckboxes: React.FC<Props> = ({ services, selectedServices, handleServiceChange }) => (
-    <>
-        {services.map((service) => (
-            <label key={service.name}>
-                <input
-                    type="checkbox"
-                    checked={selectedServices.includes(service.name)}
-                    onChange={() => handleServiceChange(service.name)}
-                    disabled={
-                        service.required ? !selectedServices.some((s) => service.required!.includes(s)) : false
-                    }
-                />
-                {service.name}
-            </label>
-        ))}
-    </>
+    <div className="service-checkbox-wrapper">
+        {services.map((service) => {
+            const isDisabled = service.required ? !selectedServices.some((s) => service.required!.includes(s)) : false;
+            const tooltip = isDisabled ? `Wymagana dodatkowa usługa: ${service.required!.join(', ')}` : '';
+            return (
+                <label key={service.name} title={tooltip}>
+                    <input
+                        type="checkbox"
+                        checked={selectedServices.includes(service.name)}
+                        onChange={() => handleServiceChange(service.name)}
+                        disabled={isDisabled}
+                    />
+                    {service.name}
+                </label>
+            );
+        })}
+    </div>
 );
 
 export default ServiceCheckboxes;

@@ -1,0 +1,22 @@
+.select-year-wrapper select {
+    width: 200px;
+    padding: 8px;
+    margin: 0 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.select-year-wrapper select:hover,
+.select-year-wrapper select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
