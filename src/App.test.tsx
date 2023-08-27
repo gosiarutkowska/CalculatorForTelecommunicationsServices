@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-describe('Telecommunications Services Calculator', () => {
+describe('Telecommunications Services Calculator - general render tests', () => {
   beforeEach(() => {
     render(<App />);
   });

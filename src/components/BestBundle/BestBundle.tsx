@@ -19,7 +19,7 @@ const BestBundle: React.FC<BestBundleProps> = ({ bestBundle, selectedYear, total
                     <p>W pakiecie znajdziesz:</p>
                     <ul className="services-list">
                         {bestBundle.services.map((service, index) => (
-                            <li key={index}>{service}</li>
+                            <li key={index + service}>{service}</li>
                         ))}
                     </ul>
                     {totalPrice! - bestBundle.prices[selectedYear as keyof typeof bestBundle.prices] > 0 && (
