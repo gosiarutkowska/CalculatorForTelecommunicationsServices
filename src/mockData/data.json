@@ -22,24 +22,24 @@
   ],
   "bundles": [
     {
-      "name": "Pakiet srebrny",
+      "name": "Pakiet Srebrny",
       "services": ["Internet", "Telewizja"],
       "prices": {"2023": 72, "2024": 89, "2025": 99}
     },
     {
-      "name": "Pakiet złoty",
+      "name": "Pakiet Złoty",
       "services": ["Internet", "Abonament telefoniczny"],
       "prices": {"2023": 64, "2024": 64, "2025": 64}
     },
     {
-      "name": "Pakiet platynowy",
+      "name": "Pakiet Platynowy",
       "services": ["Abonament telefoniczny", "Telewizja", "Dekoder 4K"],
       "prices": {"2023": 44, "2024": 64, "2025": 664}
     },
     {
       "name": "Pakiet VIP",
-      "services": ["Abonament telefoniczny", "Internet"],
-      "prices": {"2023": 54, "2024": 64, "2025": 4}
+      "services": ["Abonament telefoniczny", "Internet", "Telewizja", "Dekoder 4K"],
+      "prices": {"2023": 54, "2024": 64, "2025": 70}
     }
   ]
 }

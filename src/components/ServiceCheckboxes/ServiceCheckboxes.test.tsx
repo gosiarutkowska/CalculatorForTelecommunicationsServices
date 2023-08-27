@@ -7,8 +7,8 @@ describe('ServiceCheckboxes component', () => {
 
     const mockServices = [
         { name: 'Internet', prices: {}, required: [] },
-        { name: 'TV', prices: {}, required: [] },
-        { name: 'Dekoder 4K', prices: {}, required: ['TV'] },
+        { name: 'Telewizja', prices: {}, required: [] },
+        { name: 'Dekoder 4K', prices: {}, required: ['Telewizja'] },
     ];
 
     it('should call handleServiceChange when checkbox is clicked', () => {
@@ -27,6 +27,7 @@ describe('ServiceCheckboxes component', () => {
     it('should display tooltip if checkbox is disabled', () => {
         const { getByLabelText } = render(<ServiceCheckboxes services={mockServices} selectedServices={[]} handleServiceChange={mockHandleServiceChange} />);
 
-        expect(getByLabelText('Dekoder 4K').parentNode).toHaveAttribute('title', 'Wymagana dodatkowa usługa: TV');
+        expect(getByLabelText('Dekoder 4K').parentNode).toHaveAttribute('title', 'Wymagana dodatkowa usługa:' +
+            ' Telewizja');
     });
 });
