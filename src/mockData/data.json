@@ -24,8 +24,7 @@
     {
       "name": "Internet + Telewizja",
       "services": ["Internet", "Telewizja"],
-      "prices": {"2023": 72, "2024": 89, "2025": 99},
-      "bonus": ["Dekoder 4K"]
+      "prices": {"2023": 72, "2024": 89, "2025": 99}
     },
     {
       "name": "Internet + Abonament telefoniczny",
@@ -34,9 +33,8 @@
     },
     {
       "name": "Wszystko w cenie",
-      "services": ["Abonament telefoniczny", "Telewizja"],
-      "prices": {"2023": 44, "2024": 64, "2025": 664},
-      "bonus": ["Dekoder 4K"]
+      "services": ["Abonament telefoniczny", "Telewizja", "Dekoder 4K"],
+      "prices": {"2023": 44, "2024": 64, "2025": 664}
     },
     {
       "name": "Wszystko test",

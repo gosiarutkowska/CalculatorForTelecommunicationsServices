@@ -1,28 +1,12 @@
 import React, { useState } from 'react';
 import data from './mockData/data.json';
+import SelectYear from './components/SelectYear/SelectYear';
+import ServiceCheckboxes from './components/ServiceCheckboxes/ServiceCheckboxes';
+import CalculateButton from './components/CalculateButton/CalculateButton';
+import TotalPrice from './components/TotalPrice/TotalPrice';
+import BestBundle from './components/BestBundle/BestBundle';
+import { Bundle } from './types/commonTypes';
 
-// Typy
-interface Service {
-  name: string;
-  prices: Record<string, number>;
-  dependencies?: string[];
-  required?: string[];
-}
-
-interface Bundle {
-  name: string;
-  services: string[];
-  prices: Record<string, number>;
-  bonus?: string[];
-}
-
-interface Data {
-  years: string[];
-  services: Service[];
-  bundles: Bundle[];
-}
-
-// Komponent
 const App: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
@@ -52,76 +36,68 @@ const App: React.FC = () => {
     });
   };
 
-  const calculateTotal = () => {
-    let sum = 0;
-    let bestBundle: Bundle | null = null;
+  const findServicePrice = (serviceName: string, year: string) => {
+    const service = data.services.find((s) => s.name === serviceName);
+    return service?.prices[year as keyof typeof service.prices] ?? 0;
+  };
 
-    for (const service of selectedServices) {
-      const serviceObj = data.services.find((s) => s.name === service);
-      if (serviceObj && serviceObj.prices.hasOwnProperty(selectedYear)) {
-        sum += serviceObj.prices[selectedYear as keyof typeof serviceObj.prices];
-      }
-    }
+  const isSubsetOfBundle = (selectedServices: string[], bundle: Bundle) => {
+    return selectedServices.every(service => bundle.services.includes(service));
+  };
+
+  const calculateServiceSum = (selectedServices: string[], year: string) => {
+    return selectedServices.reduce((sum, service) => sum + findServicePrice(service, year), 0);
+  };
+
+  const findBestBundle = (selectedServices: string[], year: string) => {
+    let bestBundle: Bundle | null = null;
+    let bestSavings = 0;
 
     for (const bundle of data.bundles) {
-      let isBundlePossible = true;
-      for (const service of bundle.services) {
-        if (!selectedServices.includes(service)) {
-          isBundlePossible = false;
-          break;
-        }
-      }
-      if (isBundlePossible && bundle.prices.hasOwnProperty(selectedYear)) {
-        const bundlePrice = bundle.prices[selectedYear as keyof typeof bundle.prices];
-        const savings = sum - bundlePrice;
-        if (savings > 0) {
+      if (isSubsetOfBundle(selectedServices, bundle)) {
+        const totalBundlePrice = calculateServiceSum(selectedServices, year);
+        const bundlePrice = bundle.prices[year as keyof typeof bundle.prices] ?? 0;
+        const savings = totalBundlePrice - bundlePrice;
+
+        if (savings > bestSavings) {
+          bestSavings = savings;
           bestBundle = bundle;
         }
       }
     }
 
+    return bestBundle;
+  };
+  const calculateTotal = () => {
+    const sum = calculateServiceSum(selectedServices, selectedYear);
+    const bestBundle = findBestBundle(selectedServices, selectedYear);
+
     setTotalPrice(sum);
     setBestBundle(bestBundle);
   };
 
+
   return (
       <div className="App">
-        <h1>Service Calculator</h1>
-        <label>
-          Select Year:
-          <select value={selectedYear} onChange={handleYearChange}>
-            {data.years.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-            ))}
-          </select>
-        </label>
-        <h2>Select Services</h2>
-        {data.services.map((service) => (
-            <label key={service.name}>
-              <input
-                  type="checkbox"
-                  checked={selectedServices.includes(service.name)}
-                  onChange={() => handleServiceChange(service.name)}
-                  disabled={
-                    service.required ? !selectedServices.some((s) => service.required!.includes(s)) : false
-                  }
-              />
-              {service.name}
-            </label>
-        ))}
-        <button onClick={calculateTotal}>Calculate</button>
-        {totalPrice !== null && <h2>Total Price: {totalPrice} PLN</h2>}
-        {bestBundle && (
-            <div>
-              <h2>Best Bundle:</h2>
-              <p>Name: {bestBundle.name}</p>
-              <p>Price: {bestBundle.prices[selectedYear as keyof typeof bestBundle.prices]} PLN</p>
-              <p>Services: {bestBundle.services.join(', ')}</p>
-              <p>Z pakietem '{bestBundle.name}' oszczędzasz {totalPrice! - bestBundle.prices[selectedYear as keyof typeof bestBundle.prices]} PLN</p>
-            </div>
-        )}
+        <h1>Kalkulator usług telekomunikacyjnych</h1>
+        <SelectYear
+            selectedYear={selectedYear}
+            handleYearChange={handleYearChange}
+            years={data.years}
+        />
+        <h2>Wybierz usług, którymi się interesujesz</h2>
+        <ServiceCheckboxes
+            services={data.services}
+            selectedServices={selectedServices}
+            handleServiceChange={handleServiceChange}
+        />
+        <CalculateButton calculateTotal={calculateTotal} />
+        <TotalPrice totalPrice={totalPrice} />
+        <BestBundle
+            bestBundle={bestBundle}
+            selectedYear={selectedYear}
+            totalPrice={totalPrice}
+        />
       </div>
   );
 };
