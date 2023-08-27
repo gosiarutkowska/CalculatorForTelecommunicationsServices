@@ -17,7 +17,11 @@ git clone https://github.com/gosiarutkowska/CalculatorFotTelecommunicationsServi
 cd CalculatorFotTelecommunicationsServices
 ```
 
-## Installation
+## Installation and Running the Application
+
+### Using npm
+
+#### Installation with npm
 
 Install the required packages:
 
@@ -25,9 +29,7 @@ Install the required packages:
 npm install
 ```
 
-## Running the Application
-
-### Using npm
+#### Running the Application
 
 To run the application:
 
@@ -39,11 +41,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Using Docker
 
+#### Installation using Docker
+
 Build the Docker image:
 
 ```bash
 docker-compose build
 ```
+
+#### Running the Docker Container
 
 Run the Docker container:
 
