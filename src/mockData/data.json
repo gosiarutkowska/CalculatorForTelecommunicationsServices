@@ -1,0 +1,47 @@
+{
+  "years": ["2023", "2024", "2025"],
+  "services": [
+    {
+      "name": "Internet",
+      "prices": {"2023": 39, "2024": 49, "2025": 59}
+    },
+    {
+      "name": "Telewizja",
+      "prices": {"2023": 49, "2024": 49, "2025": 59},
+      "dependencies": ["Dekoder 4K"]
+    },
+    {
+      "name": "Abonament telefoniczny",
+      "prices": {"2023": 59, "2024": 29, "2025": 29}
+    },
+    {
+      "name": "Dekoder 4K",
+      "prices": {"2023": 59, "2024": 29, "2025": 29},
+      "required": ["Telewizja"]
+    }
+  ],
+  "bundles": [
+    {
+      "name": "Internet + Telewizja",
+      "services": ["Internet", "Telewizja"],
+      "prices": {"2023": 72, "2024": 89, "2025": 99},
+      "bonus": ["Dekoder 4K"]
+    },
+    {
+      "name": "Internet + Abonament telefoniczny",
+      "services": ["Internet", "Abonament telefoniczny"],
+      "prices": {"2023": 64, "2024": 64, "2025": 64}
+    },
+    {
+      "name": "Wszystko w cenie",
+      "services": ["Abonament telefoniczny", "Telewizja"],
+      "prices": {"2023": 44, "2024": 64, "2025": 664},
+      "bonus": ["Dekoder 4K"]
+    },
+    {
+      "name": "Wszystko test",
+      "services": ["Abonament telefoniczny", "Internet"],
+      "prices": {"2023": 54, "2024": 64, "2025": 4}
+    }
+  ]
+}
